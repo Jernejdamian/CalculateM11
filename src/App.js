@@ -7,7 +7,7 @@ function App() {
 
   const [result, setResult] = useState();
 
-  const calculateResult = (amount, currency) => {
+  const calculateResult = (currency, amount) => {
 
     const rate = currencies.find(({ short }) => short === currency).rate;
     setResult({
