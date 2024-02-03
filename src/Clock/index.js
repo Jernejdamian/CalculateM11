@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+export const Clock = () => {
+    const [data, setData] = useState(new Date());
 
-export const Clock=()=>{
-const [data, setData] =useState(new Date());
+    useEffect(()=>{
+        const intervalID = setInterval(() => {
+            setData(new Date())
+        }, 1000)
+    
+        return()=>{
+            clearInterval(intervalID)
+        }
+    },[])
 
-useEffect(()=>{
-const intervalID = setInterval(()=>{
-setData(new Date())
-},1000)
-return()=>{
-    clearInterval(intervalID)
-}
 
-},[])
-
-    return(
+    return (
         <div>
-            Dzisiaj jest {""}
-            {data.toLocaleString(undefined,{
+            Dzisiaj jest {" "}
+            {data.toLocaleString(undefined, {
                 weekday: "long",
                 year: "numeric",
                 month: "long",
@@ -24,7 +24,6 @@ return()=>{
                 hour: "2-digit",
                 minute: "2-digit",
                 second: "2-digit",
-                
             })}
         </div>
     )
